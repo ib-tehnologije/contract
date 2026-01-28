@@ -1550,6 +1550,30 @@ class TestContract(TestContractBase):
         self.contract.recurring_create_invoice()
         self.assertEqual(len(self.contract._get_related_invoices()), 4)
 
+    def test_cancelled_invoice_resets_schedule(self):
+        """Cancelling or deleting an invoice should roll back recurrence."""
+        self.acct_line.date_start = "2024-01-01"
+        self.acct_line.recurring_invoicing_type = "pre-paid"
+        invoice = self.contract.recurring_create_invoice()
+        self.assertEqual(self.acct_line.last_date_invoiced, to_date("2024-01-31"))
+        self.assertEqual(self.acct_line.recurring_next_date, to_date("2024-02-01"))
+
+        invoice.button_cancel()
+        self.acct_line.invalidate_cache(
+            ["last_date_invoiced", "recurring_next_date"], [self.acct_line.id]
+        )
+        self.assertFalse(self.acct_line.last_date_invoiced)
+        self.assertEqual(self.acct_line.recurring_next_date, to_date("2024-01-01"))
+
+        invoice2 = self.contract.recurring_create_invoice()
+        self.assertEqual(self.acct_line.last_date_invoiced, to_date("2024-01-31"))
+        invoice2.unlink()
+        self.acct_line.invalidate_cache(
+            ["last_date_invoiced", "recurring_next_date"], [self.acct_line.id]
+        )
+        self.assertFalse(self.acct_line.last_date_invoiced)
+        self.assertEqual(self.acct_line.recurring_next_date, to_date("2024-01-01"))
+
     @freeze_time("2023-05-01")
     def test_check_month_name_marker(self):
         """Set fixed date to check test correctly."""

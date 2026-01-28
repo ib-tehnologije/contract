@@ -283,6 +283,63 @@ class ContractLine(models.Model):
                 }
             )
 
+    def _recompute_dates_from_invoices(self):
+        """Rebuild last/next invoice dates after invoice cancel or deletion.
+
+        The default flow moves ``last_date_invoiced`` forward every time an
+        invoice is created. If an invoice is cancelled or removed, the
+        recurrence must roll back so the same period can be invoiced again.
+        We can't read the original period from the invoice lines, so we
+        rebuild the schedule from the contract line start date and the number
+        of remaining invoices linked to the line.
+        """
+        move_model = self.env["account.move"]
+        for line in self:
+            moves = (
+                move_model.search(
+                    [
+                        ("line_ids.contract_line_id", "=", line.id),
+                        ("state", "!=", "cancel"),
+                        (
+                            "move_type",
+                            "in",
+                            ("out_invoice", "out_refund", "in_invoice", "in_refund"),
+                        ),
+                    ]
+                )
+                or move_model.browse()
+            )
+            invoice_count = len(moves)
+            next_period_start = line.date_start
+            last_date_invoiced = False
+            for _ in range(invoice_count):
+                period_end = line.get_next_period_date_end(
+                    next_period_start,
+                    line.recurring_rule_type,
+                    line.recurring_interval,
+                    max_date_end=line.date_end,
+                )
+                if not period_end:
+                    break
+                last_date_invoiced = period_end
+                next_period_start = period_end + relativedelta(days=1)
+
+            next_invoice_date = line.get_next_invoice_date(
+                next_period_start,
+                line.recurring_invoicing_type,
+                line.recurring_invoicing_offset,
+                line.recurring_rule_type,
+                line.recurring_interval,
+                max_date_end=line.date_end,
+            )
+
+            line.write(
+                {
+                    "last_date_invoiced": last_date_invoiced,
+                    "recurring_next_date": next_invoice_date,
+                }
+            )
+
     def _can_be_invoiced(self, date_ref):
         self.ensure_one()
         return (
