@@ -124,7 +124,7 @@ msgstr ""
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.report_contract_document
 msgid "<strong class=\"mr16\">Subtotal</strong>"
-msgstr ""
+msgstr "<strong class=\"mr16\">Međuzbroj</strong>"
 
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_contract_form_view
@@ -213,7 +213,7 @@ msgstr ""
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.report_contract_document
 msgid "<strong>Notes: </strong>"
-msgstr ""
+msgstr "<strong>Napomene: </strong>"
 
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.report_contract_document
@@ -456,9 +456,8 @@ msgstr ""
 #. module: contract
 #: model:ir.model,name:contract.model_contract_line
 #: model:ir.model.fields,field_description:contract.field_account_move_line__contract_line_id
-#, fuzzy
 msgid "Contract Line"
-msgstr "Predložak ugovora"
+msgstr "Stavka ugovora"
 
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_manually_create_invoice_form_view
@@ -467,9 +466,8 @@ msgstr ""
 
 #. module: contract
 #: model:ir.model,name:contract.model_contract_manually_create_invoice
-#, fuzzy
 msgid "Contract Manually Create Invoice Wizard"
-msgstr "Predložak ugovora"
+msgstr "Čarobnjak za ručno fakturiranje ugovora"
 
 #. module: contract
 #: model:ir.model,name:contract.model_contract_modification
@@ -484,9 +482,8 @@ msgstr ""
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_contract_form_view
 #: model_terms:ir.ui.view,arch_db:contract.contract_template_form_view
-#, fuzzy
 msgid "Contract Name"
-msgstr "Predložak ugovora"
+msgstr "Naziv ugovora"
 
 #. module: contract
 #: model:ir.model,name:contract.model_contract_recurring_mixin
@@ -501,15 +498,13 @@ msgstr ""
 #. module: contract
 #: model:ir.model,name:contract.model_contract_tag
 #: model:ir.ui.menu,name:contract.contract_tag_menu
-#, fuzzy
 msgid "Contract Tag"
-msgstr "Predložak ugovora"
+msgstr "Oznaka ugovora"
 
 #. module: contract
 #: model:ir.actions.act_window,name:contract.contract_tag_act_window
-#, fuzzy
 msgid "Contract Tags"
-msgstr "Predložak ugovora"
+msgstr "Oznake ugovora"
 
 #. module: contract
 #: model:ir.model,name:contract.model_contract_template
@@ -520,9 +515,8 @@ msgstr "Predložak ugovora"
 
 #. module: contract
 #: model:ir.model,name:contract.model_contract_template_line
-#, fuzzy
 msgid "Contract Template Line"
-msgstr "Predložak ugovora"
+msgstr "Stavka predloška ugovora"
 
 #. module: contract
 #: model:ir.actions.act_window,name:contract.contract_template_action
@@ -532,24 +526,21 @@ msgstr "Predlošci ugovora"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_manually_create_invoice__contract_to_invoice_ids
-#, fuzzy
 msgid "Contract To Invoice"
-msgstr "Predložak ugovora"
+msgstr "Ugovor za fakturiranje"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_manually_create_invoice__contract_to_invoice_count
-#, fuzzy
 msgid "Contract To Invoice Count"
-msgstr "Račun"
+msgstr "Broj ugovora za fakturiranje"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__contract_type
 #: model:ir.model.fields,field_description:contract.field_contract_manually_create_invoice__contract_type
 #: model:ir.model.fields,field_description:contract.field_contract_template__contract_type
 #: model_terms:ir.ui.view,arch_db:contract.contract_template_search_view
-#, fuzzy
 msgid "Contract Type"
-msgstr "Predložak ugovora"
+msgstr "Vrsta ugovora"
 
 #. module: contract
 #: model:ir.model.fields,help:contract.field_contract_contract__date_start
@@ -568,9 +559,8 @@ msgstr ""
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__contract_line_ids
-#, fuzzy
 msgid "Contract lines"
-msgstr "Ugovori"
+msgstr "Stavke ugovora"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__contract_line_fixed_ids
@@ -596,9 +586,8 @@ msgstr ""
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_template__contract_line_ids
-#, fuzzy
 msgid "Contract template lines"
-msgstr "Predlošci ugovora"
+msgstr "Stavke predloška ugovora"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_res_partner__contract_ids
@@ -614,9 +603,8 @@ msgstr "Ugovori"
 #. module: contract
 #. odoo-python
 #: code:addons/contract/wizards/contract_manually_create_invoice.py:0
-#, fuzzy
 msgid "Contracts to invoice"
-msgstr "Predložak ugovora"
+msgstr "Ugovori za fakturiranje"
 
 #. module: contract
 #: model:ir.model.fields,help:contract.field_contract_line__product_uom_category_id
@@ -669,9 +657,8 @@ msgstr "Kreirano"
 #: model:ir.model.fields,field_description:contract.field_contract_contract__currency_id
 #: model:ir.model.fields,field_description:contract.field_contract_line__currency_id
 #: model:ir.model.fields,field_description:contract.field_contract_template_line__currency_id
-#, fuzzy
 msgid "Currency"
-msgstr "Ponavljanje"
+msgstr "Valuta"
 
 #. module: contract
 #: model:ir.model.fields.selection,name:contract.selection__contract_line__note_invoicing_mode__custom
@@ -695,14 +682,13 @@ msgstr ""
 #. module: contract
 #: model:ir.ui.menu,name:contract.menu_customer_contract_line_report
 msgid "Customer Contract lines"
-msgstr ""
+msgstr "Stavke ugovora kupaca"
 
 #. module: contract
 #: model:ir.actions.act_window,name:contract.action_customer_contract
 #: model:ir.ui.menu,name:contract.menu_contract_contract_customer
-#, fuzzy
 msgid "Customer Contracts"
-msgstr "Ugovori"
+msgstr "Ugovori kupaca"
 
 #. module: contract
 #: model:ir.model.fields,help:contract.field_contract_contract__access_url
@@ -829,14 +815,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:contract.field_contract_template__display_name
 #: model:ir.model.fields,field_description:contract.field_contract_template_line__display_name
 msgid "Display Name"
-msgstr "Naziv"
+msgstr "Prikazani naziv"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_line__display_type
 #: model:ir.model.fields,field_description:contract.field_contract_template_line__display_type
-#, fuzzy
 msgid "Display Type"
-msgstr "Naziv"
+msgstr "Vrsta prikaza"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_line__distribution_analytic_account_ids
@@ -900,9 +885,8 @@ msgstr ""
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__group_id
-#, fuzzy
 msgid "Group"
-msgstr "Grupiraj po..."
+msgstr "Grupa"
 
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_contract_search_view
@@ -967,15 +951,13 @@ msgstr "Račun"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__invoice_count
-#, fuzzy
 msgid "Invoice Count"
-msgstr "Račun"
+msgstr "Broj računa"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_manually_create_invoice__invoice_date
-#, fuzzy
 msgid "Invoice Date"
-msgstr "Sljedeći račun"
+msgstr "Datum računa"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__recurring_interval
@@ -983,9 +965,8 @@ msgstr "Sljedeći račun"
 #: model:ir.model.fields,field_description:contract.field_contract_recurring_mixin__recurring_interval
 #: model:ir.model.fields,field_description:contract.field_contract_template__recurring_interval
 #: model:ir.model.fields,field_description:contract.field_contract_template_line__recurring_interval
-#, fuzzy
 msgid "Invoice Every"
-msgstr "Račun"
+msgstr "Fakturiraj svakih"
 
 #. module: contract
 #: model:mail.message.subtype,name:contract.mail_message_subtype_invoice_created
@@ -1016,9 +997,8 @@ msgstr ""
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__invoice_partner_id
-#, fuzzy
 msgid "Invoicing contact"
-msgstr "Tip izdavanja računa"
+msgstr "Kontakt za račune"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__recurring_invoicing_offset
@@ -1026,9 +1006,8 @@ msgstr "Tip izdavanja računa"
 #: model:ir.model.fields,field_description:contract.field_contract_recurring_mixin__recurring_invoicing_offset
 #: model:ir.model.fields,field_description:contract.field_contract_template__recurring_invoicing_offset
 #: model:ir.model.fields,field_description:contract.field_contract_template_line__recurring_invoicing_offset
-#, fuzzy
 msgid "Invoicing offset"
-msgstr "Tip izdavanja računa"
+msgstr "Pomak fakturiranja"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__recurring_invoicing_type
@@ -1080,9 +1059,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:contract.field_contract_recurring_mixin__last_date_invoiced
 #: model:ir.model.fields,field_description:contract.field_contract_template__last_date_invoiced
 #: model:ir.model.fields,field_description:contract.field_contract_template_line__last_date_invoiced
-#, fuzzy
 msgid "Last Date Invoiced"
-msgstr "Datum sljedećeg računa"
+msgstr "Datum zadnjeg fakturiranja"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__write_uid
@@ -1125,16 +1103,14 @@ msgstr ""
 #. module: contract
 #: model:ir.actions.act_window,name:contract.purchase_contract_manually_create_invoice_act_window
 #: model:ir.ui.menu,name:contract.purchase_contract_manually_create_invoice_menu
-#, fuzzy
 msgid "Manually Invoice Purchase Contracts"
-msgstr "Ugovori"
+msgstr "Ručno fakturiraj ugovore dobavljača"
 
 #. module: contract
 #: model:ir.actions.act_window,name:contract.sale_contract_manually_create_invoice_act_window
 #: model:ir.ui.menu,name:contract.sale_contract_manually_create_invoice_menu
-#, fuzzy
 msgid "Manually Invoice Sale Contracts"
-msgstr "Ugovori"
+msgstr "Ručno fakturiraj ugovore kupaca"
 
 #. module: contract
 #. odoo-python
@@ -1255,9 +1231,8 @@ msgstr ""
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_line__note_invoicing_mode
 #: model:ir.model.fields,field_description:contract.field_contract_template_line__note_invoicing_mode
-#, fuzzy
 msgid "Note Invoicing Mode"
-msgstr "Tip izdavanja računa"
+msgstr "Način fakturiranja napomena"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__note
@@ -1394,9 +1369,8 @@ msgstr "Proizvod"
 #: model:ir.model.fields,field_description:contract.field_res_partner__purchase_contract_count
 #: model:ir.model.fields,field_description:contract.field_res_users__purchase_contract_count
 #: model_terms:ir.ui.view,arch_db:contract.view_partner_form
-#, fuzzy
 msgid "Purchase Contracts"
-msgstr "Ugovori"
+msgstr "Ugovori dobavljača"
 
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_contract_form_view
@@ -1462,9 +1436,8 @@ msgstr ""
 #: code:addons/contract/controllers/main.py:0
 #: model:ir.model.fields,field_description:contract.field_contract_contract__code
 #: model_terms:ir.ui.view,arch_db:contract.portal_my_contracts
-#, fuzzy
 msgid "Reference"
-msgstr "Ponavljanje"
+msgstr "Referenca"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__user_id
@@ -1480,17 +1453,15 @@ msgstr ""
 #: model:ir.model.fields,field_description:contract.field_res_partner__sale_contract_count
 #: model:ir.model.fields,field_description:contract.field_res_users__sale_contract_count
 #: model_terms:ir.ui.view,arch_db:contract.view_partner_form
-#, fuzzy
 msgid "Sale Contracts"
-msgstr "Ugovori"
+msgstr "Ugovori kupaca"
 
 #. module: contract
 #: model:ir.model.fields.selection,name:contract.selection__contract_line__display_type__line_section
 #: model:ir.model.fields.selection,name:contract.selection__contract_template_line__display_type__line_section
 #: model_terms:ir.ui.view,arch_db:contract.contract_template_line_form_view
-#, fuzzy
 msgid "Section"
-msgstr "Opis"
+msgstr "Odjeljak"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__access_token
@@ -1596,14 +1567,13 @@ msgstr ""
 #. module: contract
 #: model:ir.ui.menu,name:contract.menu_supplier_contract_line_report
 msgid "Supplier Contract lines"
-msgstr ""
+msgstr "Stavke ugovora dobavljača"
 
 #. module: contract
 #: model:ir.actions.act_window,name:contract.action_supplier_contract
 #: model:ir.ui.menu,name:contract.menu_contract_contract_supplier
-#, fuzzy
 msgid "Supplier Contracts"
-msgstr "Ugovori"
+msgstr "Ugovori dobavljača"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__tag_ids
@@ -1736,9 +1706,8 @@ msgstr ""
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_contract_form_view
 #: model_terms:ir.ui.view,arch_db:contract.contract_template_form_view
-#, fuzzy
 msgid "e.g. Contract XYZ"
-msgstr "Ugovori"
+msgstr "npr. Ugovor XYZ"
 
 #. module: contract
 #: model:mail.template,subject:contract.email_contract_template
