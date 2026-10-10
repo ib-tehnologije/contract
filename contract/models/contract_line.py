@@ -333,7 +333,7 @@ class ContractLine(models.Model):
             invoice_count = len(moves)
             next_period_start = line.date_start
             last_date_invoiced = False
-            for _ in range(invoice_count):
+            for _period in range(invoice_count):
                 period_end = line.get_next_period_date_end(
                     next_period_start,
                     line.recurring_rule_type,
