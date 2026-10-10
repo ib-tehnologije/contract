@@ -8,8 +8,19 @@ import warnings
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import api, fields, models
-from odoo.exceptions import ValidationError
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError, ValidationError
+
+# Months equivalent per recurrence unit (to normalise amounts to monthly)
+_MONTHS_PER_RULE = {
+    "daily": 1.0 / 30.0,
+    "weekly": 7.0 / 30.0,
+    "monthly": 1.0,
+    "monthlylastday": 1.0,
+    "quarterly": 3.0,
+    "semesterly": 6.0,
+    "yearly": 12.0,
+}
 
 
 class ContractLine(models.Model):
@@ -92,7 +103,10 @@ class ContractLine(models.Model):
     @api.constrains("recurring_next_date", "date_start")
     def _check_recurring_next_date_start_date(self):
         for line in self:
-            if line.display_type == "line_section" or not line.recurring_next_date:
+            if (
+                line.display_type in ("line_section", "line_note")
+                or not line.recurring_next_date
+            ):
                 continue
             if line.date_start and line.recurring_next_date:
                 if line.date_start > line.recurring_next_date:
@@ -255,14 +269,21 @@ class ContractLine(models.Model):
         lang = lang_obj.search([("code", "=", self.contract_id.partner_id.lang)])
         date_format = lang.date_format or "%m/%d/%Y"
         name = self.name
-        name = name.replace("#START#", first_date_invoiced.strftime(date_format))
-        name = name.replace("#END#", last_date_invoiced.strftime(date_format))
+        # A line without a period (e.g. no next date) leaves its markers empty
         name = name.replace(
-            "#INVOICEMONTHNAME#",
-            self.with_context(lang=lang.code)._translate_marker_month_name(
-                first_date_invoiced.strftime("%m")
-            ),
+            "#START#",
+            first_date_invoiced.strftime(date_format) if first_date_invoiced else "",
         )
+        name = name.replace(
+            "#END#",
+            last_date_invoiced.strftime(date_format) if last_date_invoiced else "",
+        )
+        month_name = ""
+        if first_date_invoiced:
+            month_name = self.with_context(lang=lang.code)._translate_marker_month_name(
+                first_date_invoiced.strftime("%m")
+            )
+        name = name.replace("#INVOICEMONTHNAME#", month_name)
         return name
 
     def _update_recurring_next_date(self):
@@ -361,8 +382,75 @@ class ContractLine(models.Model):
                 view_id = self.env.ref("contract.contract_line_customer_form_view").id
         return super().get_view(view_id, view_type, **options)
 
+    monthly_recurring = fields.Monetary(
+        compute="_compute_monthly_recurring",
+        store=True,
+        currency_field="currency_id",
+    )
+
+    @api.depends(
+        "display_type",
+        "price_subtotal",
+        "recurring_rule_type",
+        "recurring_interval",
+    )
+    def _compute_monthly_recurring(self):
+        for line in self:
+            if line.display_type:
+                line.monthly_recurring = 0.0
+                continue
+            months = _MONTHS_PER_RULE.get(line.recurring_rule_type, 1.0) * (
+                line.recurring_interval or 1
+            )
+            line.monthly_recurring = line.price_subtotal / months if months else 0.0
+
     def _get_quantity_to_invoice(
         self, period_first_date, period_last_date, invoice_date
     ):
         self.ensure_one()
         return self.quantity if not self.display_type else 0.0
+
+    def _get_contract_line_total_value(self):
+        """Return the total value of this contract line over its full period.
+
+        Raises UserError if the line has no date_end, since a
+        total cannot be computed without a known end date.
+        """
+        self.ensure_one()
+        if not self.date_end:
+            raise UserError(
+                _(
+                    "Cannot compute total value for contract line '%s': "
+                    "no end date is set.",
+                    self.display_name,
+                )
+            )
+
+        period_length = self.get_relative_delta(
+            self.recurring_rule_type, self.recurring_interval
+        )
+        currency = (
+            self.contract_id.pricelist_id.currency_id
+            if self.contract_id.pricelist_id
+            else self.currency_id
+        )
+
+        current_period_start = self.date_start
+        total_amount = 0.0
+        while current_period_start <= self.date_end:
+            current_period_end = (
+                current_period_start + period_length - relativedelta(days=1)
+            )
+            if current_period_end > self.date_end:
+                current_period_end = self.date_end
+            qty = self._get_quantity_to_invoice(
+                current_period_start,
+                current_period_end,
+                current_period_start,  # Mock an invoice date at period start
+            )
+            subtotal = qty * self.price_unit * (1 - (self.discount / 100.0))
+            if currency:
+                subtotal = currency.round(subtotal)
+            total_amount += subtotal
+            current_period_start += period_length
+        return total_amount

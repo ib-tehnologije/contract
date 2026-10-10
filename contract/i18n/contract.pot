@@ -336,6 +336,12 @@ msgid "Canceled"
 msgstr ""
 
 #. module: contract
+#. odoo-python
+#: code:addons/contract/models/contract_line.py:0
+msgid "Cannot compute total value for contract line '%s': no end date is set."
+msgstr ""
+
+#. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_line__product_uom_category_id
 #: model:ir.model.fields,field_description:contract.field_contract_template_line__product_uom_category_id
 msgid "Category"
@@ -626,6 +632,13 @@ msgid "Currency"
 msgstr ""
 
 #. module: contract
+#. odoo-python
+#: code:addons/contract/models/contract_template.py:0
+msgid ""
+"Currency should be same for the Journal and the Pricelist in a Contract"
+msgstr ""
+
+#. module: contract
 #: model:ir.model.fields.selection,name:contract.selection__contract_line__note_invoicing_mode__custom
 #: model:ir.model.fields.selection,name:contract.selection__contract_template_line__note_invoicing_mode__custom
 msgid "Custom"
@@ -663,6 +676,7 @@ msgstr ""
 #. module: contract
 #. odoo-python
 #: code:addons/contract/controllers/main.py:0
+#: model:ir.model.fields,field_description:contract.field_contract_contract__date
 #: model:ir.model.fields,field_description:contract.field_contract_modification__date
 #: model_terms:ir.ui.view,arch_db:contract.portal_my_contracts
 #: model_terms:ir.ui.view,arch_db:contract.report_contract_document
@@ -905,6 +919,7 @@ msgstr ""
 
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_contract_search_view
+#: model_terms:ir.ui.view,arch_db:contract.contract_line_search_view
 msgid "In progress"
 msgstr ""
 
@@ -1123,6 +1138,11 @@ msgid "Month(s) last day"
 msgstr ""
 
 #. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_line__monthly_recurring
+msgid "Monthly Recurring"
+msgstr ""
+
+#. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__my_activity_date_deadline
 msgid "My Activity Deadline"
 msgstr ""
@@ -1320,6 +1340,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:contract.field_contract_template__pricelist_id
 #: model_terms:ir.ui.view,arch_db:contract.contract_template_search_view
 msgid "Pricelist"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_contract__pricelist_id_domain
+#: model:ir.model.fields,field_description:contract.field_contract_template__pricelist_id_domain
+msgid "Pricelist Id Domain"
 msgstr ""
 
 #. module: contract
@@ -1548,6 +1574,19 @@ msgstr ""
 #: model:ir.model.fields,help:contract.field_contract_line__display_type
 #: model:ir.model.fields,help:contract.field_contract_template_line__display_type
 msgid "Technical field for UX purposes."
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,help:contract.field_contract_contract__date
+msgid ""
+"This is the date the contract is taken into account         (e.g.: signature"
+" date)"
+msgstr ""
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_line_report_tree_view
+#: model_terms:ir.ui.view,arch_db:contract.contract_line_tree_view
+msgid "Total Monthly Recurring"
 msgstr ""
 
 #. module: contract

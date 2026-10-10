@@ -102,12 +102,12 @@ msgstr "Nb de contrats"
 
 #. module: product_contract
 #: model:ir.model,name:product_contract.model_contract_line
+#: model:ir.model.fields,field_description:product_contract.field_sale_order_line__contract_line_id
 msgid "Contract Line"
 msgstr "Ligne de Contrat"
 
 #. module: product_contract
 #: model:ir.model.fields,field_description:product_contract.field_product_contract_configurator__contract_line_id
-#: model:ir.model.fields,field_description:product_contract.field_sale_order_line__contract_line_id
 #: model:ir.model.fields,field_description:product_contract.field_sale_order_line_contract_mixin__contract_line_id
 msgid "Contract Line to replace"
 msgstr "Ligne de contrat à remplacer"
@@ -673,8 +673,8 @@ msgid ""
 "Specify the time unit for generating recurring invoices (days, weeks, "
 "months, etc.)."
 msgstr ""
-"Détermine l'unité de temps pour la génération des factures récurrentes ("
-"jours, semaines, mois, etc.)."
+"Détermine l'unité de temps pour la génération des factures récurrentes "
+"(jours, semaines, mois, etc.)."
 
 #. module: product_contract
 #: model:ir.model.fields,field_description:product_contract.field_product_contract_configurator__contract_start_date_method
@@ -871,6 +871,19 @@ msgstr ""
 #: model:ir.model.fields,help:product_contract.field_product_template__recurrence_number
 msgid "Total number of recurrence periods for the contract."
 msgstr "Nombre total de période de récurrence pour le contrat."
+
+#. module: product_contract
+#. odoo-python
+#: code:addons/product_contract/models/product_template.py:0
+msgid "Value of %r should be positive"
+msgstr ""
+
+#. module: product_contract
+#. odoo-python
+#: code:addons/product_contract/models/product_template.py:0
+#: code:addons/product_contract/models/sale_order_line_contract_mixin.py:0
+msgid "Value of %r should be strictly positive"
+msgstr ""
 
 #. module: product_contract
 #: model:ir.model.fields.selection,name:product_contract.selection__product_contract_configurator__auto_renew_rule_type__weekly
