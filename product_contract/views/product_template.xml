@@ -55,6 +55,7 @@
                                     nolabel="1"
                                 />
                             </div>
+                            <field name="recurring_invoicing_type" />
                         </group>
                     </group>
                     <group string="Renewal">
@@ -66,7 +67,7 @@
                             string="Renewal Frequency"
                         >
                             <label for="auto_renew_interval" />
-                            <div>
+                            <div class="o_row">
                                 <field
                                     name="auto_renew_interval"
                                     class="oe_inline"
@@ -86,7 +87,7 @@
                             string="Termination Notice"
                         >
                             <label for="termination_notice_interval" />
-                            <div>
+                            <div class="o_row">
                                 <field
                                     name="termination_notice_interval"
                                     class="oe_inline"

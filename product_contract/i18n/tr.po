@@ -100,12 +100,12 @@ msgstr "Abonelik Sayısı"
 
 #. module: product_contract
 #: model:ir.model,name:product_contract.model_contract_line
+#: model:ir.model.fields,field_description:product_contract.field_sale_order_line__contract_line_id
 msgid "Contract Line"
 msgstr "Abonelik Satırı"
 
 #. module: product_contract
 #: model:ir.model.fields,field_description:product_contract.field_product_contract_configurator__contract_line_id
-#: model:ir.model.fields,field_description:product_contract.field_sale_order_line__contract_line_id
 #: model:ir.model.fields,field_description:product_contract.field_sale_order_line_contract_mixin__contract_line_id
 msgid "Contract Line to replace"
 msgstr "Abonelik Şablonu"
@@ -809,6 +809,19 @@ msgid "Total number of recurrence periods for the contract."
 msgstr "Sözleşmenin toplam tekrarlama periyodu sayısı."
 
 #. module: product_contract
+#. odoo-python
+#: code:addons/product_contract/models/product_template.py:0
+msgid "Value of %r should be positive"
+msgstr ""
+
+#. module: product_contract
+#. odoo-python
+#: code:addons/product_contract/models/product_template.py:0
+#: code:addons/product_contract/models/sale_order_line_contract_mixin.py:0
+msgid "Value of %r should be strictly positive"
+msgstr ""
+
+#. module: product_contract
 #: model:ir.model.fields.selection,name:product_contract.selection__product_contract_configurator__auto_renew_rule_type__weekly
 #: model:ir.model.fields.selection,name:product_contract.selection__product_contract_configurator__recurring_rule_type__weekly
 #: model:ir.model.fields.selection,name:product_contract.selection__product_template__auto_renew_rule_type__weekly
@@ -861,8 +874,8 @@ msgstr ""
 "            "
 
 #~ msgid ""
-#~ "You must specify a contract template for '%(product_name)s' product in "
-#~ "'%(company_name)s' company."
+#~ "You must specify a contract template for '%(product_name)s' product in '%"
+#~ "(company_name)s' company."
 #~ msgstr ""
 #~ "'%(company_name)s' firmasındaki '%(product_name)s' ürünü için abonelik "
 #~ "şablonu oluşturmak zorundasınız."

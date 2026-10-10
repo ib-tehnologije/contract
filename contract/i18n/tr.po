@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-28 02:01+0000\n"
-"PO-Revision-Date: 2025-04-17 16:23+0000\n"
+"PO-Revision-Date: 2026-06-03 16:19+0000\n"
 "Last-Translator: Betül Öğmen <betulo@eska.biz>\n"
 "Language-Team: Turkish (https://www.transifex.com/oca/teams/23907/tr/)\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: contract
 #: model:mail.template,body_html:contract.email_contract_template
@@ -31,8 +31,8 @@ msgid ""
 "                <p style=\"border-left: 1px solid #8e0000; margin-left: 30px;"
 "\">\n"
 "                    &amp;nbsp;&amp;nbsp;<strong>REFERENCES</strong><br/>\n"
-"                    &amp;nbsp;&amp;nbsp;Contract: <strong t-out=\"object."
-"name\"/><br/>\n"
+"                    &amp;nbsp;&amp;nbsp;Contract: <strong t-"
+"out=\"object.name\"/><br/>\n"
 "                    <t t-if=\"object.date_start\">\n"
 "                        &amp;nbsp;&amp;nbsp;Contract Date Start: <t t-"
 "out=\"object.date_start or ''\"/><br/>\n"
@@ -41,8 +41,8 @@ msgid ""
 "                    <t t-if=\"object.user_id\">\n"
 "                    <t t-if=\"object.user_id.email\">\n"
 "                            &amp;nbsp;&amp;nbsp;Your Contact: <a t-att-"
-"href=\"'mailto:%s?subject=Contract %s' % (object.user_id.email, object."
-"name)\" t-out=\"object.user_id.name\"/>\n"
+"href=\"'mailto:%s?subject=Contract %s' % (object.user_id.email, object.name)"
+"\" t-out=\"object.user_id.name\"/>\n"
 "                        </t>\n"
 "                    <t t-else=\"\">\n"
 "                            &amp;nbsp;&amp;nbsp;Your Contact: <t t-"
@@ -71,10 +71,10 @@ msgid ""
 "line-height: 16px; background-color: #F2F2F2;\">\n"
 "                    <span style=\"color: #222; margin-bottom: 5px; display: "
 "block; \">\n"
-"                        <address t-field=\"object.company_id.sudo()."
-"partner_id\" t-options=\"{&quot;widget&quot;: &quot;contact&quot;, &quot;"
-"fields&quot;: [&quot;name&quot;, &quot;address&quot;], &quot;"
-"no_marker&quot;: True}\"/>\n"
+"                        <address t-"
+"field=\"object.company_id.sudo().partner_id\" t-"
+"options=\"{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: "
+"[&quot;name&quot;, &quot;address&quot;], &quot;no_marker&quot;: True}\"/>\n"
 "                    </span>\n"
 "                    <t t-if=\"object.company_id.phone\">\n"
 "                        <div style=\"margin-top: 0px; margin-right: 0px; "
@@ -118,16 +118,16 @@ msgid ""
 "<span invisible=\"contract_to_invoice_count &gt; 1\">\n"
 "                                contract to invoice\n"
 "                            </span>\n"
-"                            <span invisible=\"contract_to_invoice_count &lt;"
-"= 1\">\n"
+"                            <span invisible=\"contract_to_invoice_count "
+"&lt;= 1\">\n"
 "                                contracts to invoice\n"
 "                            </span>"
 msgstr ""
 "<span invisible=\"contract_to_invoice_count &gt; 1\">\n"
 "                                faturalanacak abonelik\n"
 "                            </span>\n"
-"                            <span invisible=\"contract_to_invoice_count &lt;"
-"= 1\">\n"
+"                            <span invisible=\"contract_to_invoice_count "
+"&lt;= 1\">\n"
 "                                faturalanacak abonelikler\n"
 "                            </span>"
 
@@ -199,6 +199,8 @@ msgid ""
 "<strong>#START#</strong>: Start date of the\n"
 "                                        invoiced period"
 msgstr ""
+"<strong>#START#</strong>: Fatura döneminin \n"
+"                                        başlangıç tarihi"
 
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.report_contract_document
@@ -395,6 +397,14 @@ msgid "Canceled"
 msgstr "İptal Edildi"
 
 #. module: contract
+#. odoo-python
+#: code:addons/contract/models/contract_line.py:0
+msgid "Cannot compute total value for contract line '%s': no end date is set."
+msgstr ""
+"'%s' sözleşme satırı için toplam değer hesaplanamıyor: bitiş tarihi "
+"belirlenmemiş."
+
+#. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_line__product_uom_category_id
 #: model:ir.model.fields,field_description:contract.field_contract_template_line__product_uom_category_id
 msgid "Category"
@@ -407,6 +417,8 @@ msgid ""
 "Check this if you want to control recurrence at the line level instead of "
 "for the whole contract."
 msgstr ""
+"Tekrarlamayı tüm sözleşme yerine satır düzeyinde kontrol etmek istiyorsanız "
+"bunu işaretleyin."
 
 #. module: contract
 #: model_terms:ir.actions.act_window,help:contract.contract_template_action
@@ -518,7 +530,7 @@ msgstr ""
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_line_form_view
 msgid "Contract Start & End Dates"
-msgstr ""
+msgstr "Sözleşme Başlangıç ve Bitiş Tarihleri"
 
 #. module: contract
 #: model:ir.model,name:contract.model_contract_tag
@@ -574,7 +586,7 @@ msgstr "Sözleşme Türü"
 #: model:ir.model.fields,help:contract.field_contract_template__date_start
 #: model:ir.model.fields,help:contract.field_contract_template_line__date_start
 msgid "Contract activation date (first recurrence starts here)"
-msgstr ""
+msgstr "Sözleşmenin aktifleşme tarihi (ilk tekrarlama buradan başlar)"
 
 #. module: contract
 #. odoo-python
@@ -687,6 +699,12 @@ msgid "Currency"
 msgstr "Para Birimi"
 
 #. module: contract
+#. odoo-python
+#: code:addons/contract/models/contract_template.py:0
+msgid "Currency should be same for the Journal and the Pricelist in a Contract"
+msgstr ""
+
+#. module: contract
 #: model:ir.model.fields.selection,name:contract.selection__contract_line__note_invoicing_mode__custom
 #: model:ir.model.fields.selection,name:contract.selection__contract_template_line__note_invoicing_mode__custom
 msgid "Custom"
@@ -724,6 +742,7 @@ msgstr "Müşteri Portal URL"
 #. module: contract
 #. odoo-python
 #: code:addons/contract/controllers/main.py:0
+#: model:ir.model.fields,field_description:contract.field_contract_contract__date
 #: model:ir.model.fields,field_description:contract.field_contract_modification__date
 #: model_terms:ir.ui.view,arch_db:contract.portal_my_contracts
 #: model_terms:ir.ui.view,arch_db:contract.report_contract_document
@@ -773,7 +792,7 @@ msgstr "Sonraki faturanın tarihi"
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_line_search_view
 msgid "Date start"
-msgstr ""
+msgstr "Başlangıç Tarihi"
 
 #. module: contract
 #: model:ir.model.fields.selection,name:contract.selection__contract_contract__recurring_rule_type__daily
@@ -794,13 +813,15 @@ msgstr "Kasım"
 #: model:ir.model.fields,help:contract.field_contract_line__sequence
 #: model:ir.model.fields,help:contract.field_contract_template_line__sequence
 msgid "Defines line ordering in the contract."
-msgstr ""
+msgstr "Sözleşmedeki satır sıralamasını tanımlar."
 
 #. module: contract
 #: model:ir.model.fields,help:contract.field_contract_contract__generation_type
 #: model:ir.model.fields,help:contract.field_contract_template__generation_type
 msgid "Defines what document is automatically generated by the cron."
 msgstr ""
+"Cron görevi tarafından otomatik olarak hangi belgenin oluşturulacağını "
+"tanımlar."
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_line__name
@@ -831,6 +852,7 @@ msgstr "İndirim 100'den az veya ona eşit olmalıdır"
 #: model:ir.model.fields,help:contract.field_contract_template_line__discount
 msgid "Discount to apply on generated invoices. Must be ≤ 100."
 msgstr ""
+"Oluşturulan faturalara indirim uygulanacaktır. Toplam tutar ≤ 100 olmalıdır."
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__display_name
@@ -965,9 +987,12 @@ msgid ""
 "If checked, the price will be taken from the pricelist. Otherwise, it must "
 "be set manually."
 msgstr ""
+"İşaretlenirse, fiyat fiyatlistesinden alınacaktır. Aksi takdirde, manuel "
+"olarak ayarlanması gerekir."
 
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_contract_search_view
+#: model_terms:ir.ui.view,arch_db:contract.contract_line_search_view
 msgid "In progress"
 msgstr "Devam Eden"
 
@@ -1020,7 +1045,7 @@ msgstr "Faturalar"
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_contract_form_view
 msgid "Invoicing"
-msgstr ""
+msgstr "Faturalama"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__invoice_partner_id
@@ -1120,7 +1145,7 @@ msgstr "Açıklamalar (fatura satırlarındaki tanımlayıcılar için)"
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_template_form_view
 msgid "Lines"
-msgstr ""
+msgstr "Satırlar"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__manual_currency_id
@@ -1186,6 +1211,11 @@ msgid "Month(s) last day"
 msgstr "Ay(lar) son günü"
 
 #. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_line__monthly_recurring
+msgid "Monthly Recurring"
+msgstr "Aylık Tekrarlayan"
+
+#. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__my_activity_date_deadline
 msgid "My Activity Deadline"
 msgstr "Aktivitemin Son Tarihi"
@@ -1241,12 +1271,12 @@ msgstr "Sonraki Dönem Başlangıcı"
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_line_search_view
 msgid "Next invoice date"
-msgstr ""
+msgstr "Sonraki fatura tarihi"
 
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_line_form_view
 msgid "Next period to invoice"
-msgstr ""
+msgstr "Faturanın kesileceği bir sonraki dönem"
 
 #. module: contract
 #: model:ir.model.fields.selection,name:contract.selection__contract_line__display_type__line_note
@@ -1318,7 +1348,7 @@ msgstr "Ekim"
 #: model:ir.model.fields,help:contract.field_contract_template__date_end
 #: model:ir.model.fields,help:contract.field_contract_template_line__date_end
 msgid "Optional contract termination date (limits recurrence)"
-msgstr ""
+msgstr "İsteğe bağlı sözleşme fesih tarihi (tekrarını sınırlandırır)"
 
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_contract_form_view
@@ -1389,6 +1419,12 @@ msgid "Pricelist"
 msgstr "Fiyat Listesi"
 
 #. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_contract__pricelist_id_domain
+#: model:ir.model.fields,field_description:contract.field_contract_template__pricelist_id_domain
+msgid "Pricelist Id Domain"
+msgstr ""
+
+#. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_line__product_id
 #: model:ir.model.fields,field_description:contract.field_contract_template_line__product_id
 #: model_terms:ir.ui.view,arch_db:contract.contract_line_search_view
@@ -1405,7 +1441,7 @@ msgstr "Satın Alma Sözleşmeleri"
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_contract_form_view
 msgid "Put some note here..."
-msgstr ""
+msgstr "Buraya bir not yazın..."
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_line__quantity
@@ -1454,7 +1490,7 @@ msgstr "Tekrarlayan Faturalar"
 #: model:ir.model.fields,field_description:contract.field_contract_line__is_recurring_note
 #: model:ir.model.fields,field_description:contract.field_contract_template_line__is_recurring_note
 msgid "Recurring Note"
-msgstr ""
+msgstr "Yinelenen Notu"
 
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_contract_form_view
@@ -1565,7 +1601,7 @@ msgstr ""
 #: model:ir.model.fields,help:contract.field_contract_template__recurring_rule_type
 #: model:ir.model.fields,help:contract.field_contract_template_line__recurring_rule_type
 msgid "Specify interval for automatic invoice generation."
-msgstr ""
+msgstr "Otomatik fatura oluşturma için aralık belirtin."
 
 #. module: contract
 #: model:ir.model.fields,help:contract.field_contract_contract__activity_state
@@ -1620,7 +1656,20 @@ msgstr "Etiketler"
 #: model:ir.model.fields,help:contract.field_contract_line__display_type
 #: model:ir.model.fields,help:contract.field_contract_template_line__display_type
 msgid "Technical field for UX purposes."
+msgstr "Kullanıcı deneyimi (UX) amaçları için teknik alan."
+
+#. module: contract
+#: model:ir.model.fields,help:contract.field_contract_contract__date
+msgid ""
+"This is the date the contract is taken into account         (e.g.: signature "
+"date)"
 msgstr ""
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_line_report_tree_view
+#: model_terms:ir.ui.view,arch_db:contract.contract_line_tree_view
+msgid "Total Monthly Recurring"
+msgstr "Toplam Aylık Tekrarlayan Ödeme"
 
 #. module: contract
 #: model:ir.model.fields,help:contract.field_contract_contract__activity_exception_decoration
@@ -1668,6 +1717,7 @@ msgstr "Hafta(lar)"
 #: model:ir.model.fields,help:contract.field_contract_template_line__note_invoicing_mode
 msgid "When to invoice this note line relative to others."
 msgstr ""
+"Bu not satırının diğerlerine göre ne zaman faturalandırılması gerektiği."
 
 #. module: contract
 #: model:ir.model.fields.selection,name:contract.selection__contract_line__note_invoicing_mode__with_next_line
@@ -2190,8 +2240,8 @@ msgstr ""
 #~ msgstr "SMS Ulaştırma hatası"
 
 #~ msgid ""
-#~ "<span attrs=\"{'invisible': [('contract_to_invoice_count', '&gt;', "
-#~ "1)]}\">\n"
+#~ "<span attrs=\"{'invisible': [('contract_to_invoice_count', '&gt;', 1)]}"
+#~ "\">\n"
 #~ "                                contract to invoice\n"
 #~ "                            </span>\n"
 #~ "                            <span attrs=\"{'invisible': "
@@ -2199,8 +2249,8 @@ msgstr ""
 #~ "                                contracts to invoice\n"
 #~ "                            </span>"
 #~ msgstr ""
-#~ "<span attrs=\"{'invisible': [('contract_to_invoice_count', '&gt;', "
-#~ "1)]}\">\n"
+#~ "<span attrs=\"{'invisible': [('contract_to_invoice_count', '&gt;', 1)]}"
+#~ "\">\n"
 #~ "                                fatura sözleşmesi\n"
 #~ "                            </span>\n"
 #~ "                            <span attrs=\"{'invisible': "
@@ -2231,8 +2281,8 @@ msgstr ""
 #~ "                <p style=\"border-left: 1px solid #8e0000; margin-left: "
 #~ "30px;\">\n"
 #~ "                    &amp;nbsp;&amp;nbsp;<strong>REFERENCES</strong><br/>\n"
-#~ "                    &amp;nbsp;&amp;nbsp;Contract: <strong t-out=\"object."
-#~ "name\"/><br/>\n"
+#~ "                    &amp;nbsp;&amp;nbsp;Contract: <strong t-"
+#~ "out=\"object.name\"/><br/>\n"
 #~ "                    <t t-if=\"object.date_start\">\n"
 #~ "                        &amp;nbsp;&amp;nbsp;Contract Date Start: <t t-"
 #~ "out=\"object.date_start or ''\"/><br/>\n"
@@ -2241,8 +2291,8 @@ msgstr ""
 #~ "                    <t t-if=\"object.user_id\">\n"
 #~ "                        <t t-if=\"object.user_id.email\">\n"
 #~ "                            &amp;nbsp;&amp;nbsp;Your Contact: <a t-att-"
-#~ "href=\"'mailto:%s?subject=Contract %s' % (object.user_id.email, object."
-#~ "name)\" t-out=\"object.user_id.name\"/>\n"
+#~ "href=\"'mailto:%s?subject=Contract %s' % (object.user_id.email, "
+#~ "object.name)\" t-out=\"object.user_id.name\"/>\n"
 #~ "                        </t>\n"
 #~ "                        <t t-else=\"\">\n"
 #~ "                            &amp;nbsp;&amp;nbsp;Your Contact: <t t-"
@@ -2254,8 +2304,8 @@ msgstr ""
 #~ "                <br/>\n"
 #~ "                <p>If you have any questions, do not hesitate to contact "
 #~ "us.</p>\n"
-#~ "                <p>Thank you for choosing <t t-out=\"object.company_id."
-#~ "name or 'us'\"/>!</p>\n"
+#~ "                <p>Thank you for choosing <t t-"
+#~ "out=\"object.company_id.name or 'us'\"/>!</p>\n"
 #~ "                <br/>\n"
 #~ "                <br/>\n"
 #~ "                <div style=\"width: 375px; margin: 0px; padding: 0px; "
@@ -2270,10 +2320,11 @@ msgstr ""
 #~ "14px; line-height: 16px; background-color: #F2F2F2;\">\n"
 #~ "                    <span style=\"color: #222; margin-bottom: 5px; "
 #~ "display: block; \">\n"
-#~ "                        <address t-field=\"object.company_id.sudo()."
-#~ "partner_id\" t-options=\"{&quot;widget&quot;: &quot;contact&quot;, &quot;"
-#~ "fields&quot;: [&quot;name&quot;, &quot;address&quot;], &quot;"
-#~ "no_marker&quot;: True}\"/>\n"
+#~ "                        <address t-"
+#~ "field=\"object.company_id.sudo().partner_id\" t-"
+#~ "options=\"{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: "
+#~ "[&quot;name&quot;, &quot;address&quot;], &quot;no_marker&quot;: True}\"/"
+#~ ">\n"
 #~ "                    </span>\n"
 #~ "                    <t t-if=\"object.company_id.phone\">\n"
 #~ "                        <div style=\"margin-top: 0px; margin-right: 0px; "
@@ -2285,8 +2336,8 @@ msgstr ""
 #~ "                    </t>\n"
 #~ "                    <t t-if=\"object.company_id.website\">\n"
 #~ "                        <div>\n"
-#~ "                            Web: <a t-att-href=\"object.company_id."
-#~ "website\" t-out=\"object.company_id.website\"/>\n"
+#~ "                            Web: <a t-att-"
+#~ "href=\"object.company_id.website\" t-out=\"object.company_id.website\"/>\n"
 #~ "                        </div>\n"
 #~ "                    </t>\n"
 #~ "                </div>\n"
@@ -2310,8 +2361,8 @@ msgstr ""
 #~ "30px;\">\n"
 #~ "                    &amp;nbsp;&amp;nbsp;<strong>REFERANSLAR</strong><br/"
 #~ ">\n"
-#~ "                    &amp;nbsp;&amp;nbsp;Sözleşme: <strong t-out=\"object."
-#~ "name\"/><br/>\n"
+#~ "                    &amp;nbsp;&amp;nbsp;Sözleşme: <strong t-"
+#~ "out=\"object.name\"/><br/>\n"
 #~ "                    <t t-if=\"object.date_start\">\n"
 #~ "                        &amp;nbsp;&amp;nbsp;Sözleşme Tarihi Başlanma: <t "
 #~ "t-out=\"object.date_start or ''\"/><br/>\n"
@@ -2320,8 +2371,8 @@ msgstr ""
 #~ "                    <t t-if=\"object.user_id\">\n"
 #~ "                        <t t-if=\"object.user_id.email\">\n"
 #~ "                            &amp;nbsp;&amp;nbsp;Bağlantınız: <a t-att-"
-#~ "href=\"'mailto:%s?subject=Contract %s' % (object.user_id.email, object."
-#~ "name)\" t-out=\"object.user_id.name\"/>\n"
+#~ "href=\"'mailto:%s?subject=Contract %s' % (object.user_id.email, "
+#~ "object.name)\" t-out=\"object.user_id.name\"/>\n"
 #~ "                        </t>\n"
 #~ "                        <t t-else=\"\">\n"
 #~ "                            &amp;nbsp;&amp;nbsp;Bağlantınız: <t t-"
@@ -2333,8 +2384,8 @@ msgstr ""
 #~ "                <br/>\n"
 #~ "                <p>Herhangi bir sorunuz varsa, bizimle iletişime "
 #~ "geçmekten çekinmeyin.</p>\n"
-#~ "                <p>Seçtiğiniz için teşekkürler <t t-out=\"object."
-#~ "company_id.name or 'us'\"/>!</p>\n"
+#~ "                <p>Seçtiğiniz için teşekkürler <t t-"
+#~ "out=\"object.company_id.name or 'us'\"/>!</p>\n"
 #~ "                <br/>\n"
 #~ "                <br/>\n"
 #~ "                <div style=\"width: 375px; margin: 0px; padding: 0px; "
@@ -2349,10 +2400,11 @@ msgstr ""
 #~ "14px; line-height: 16px; background-color: #F2F2F2;\">\n"
 #~ "                    <span style=\"color: #222; margin-bottom: 5px; "
 #~ "display: block; \">\n"
-#~ "                        <address t-field=\"object.company_id.sudo()."
-#~ "partner_id\" t-options=\"{&quot;widget&quot;: &quot;contact&quot;, &quot;"
-#~ "fields&quot;: [&quot;name&quot;, &quot;address&quot;], &quot;"
-#~ "no_marker&quot;: True}\"/>\n"
+#~ "                        <address t-"
+#~ "field=\"object.company_id.sudo().partner_id\" t-"
+#~ "options=\"{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: "
+#~ "[&quot;name&quot;, &quot;address&quot;], &quot;no_marker&quot;: True}\"/"
+#~ ">\n"
 #~ "                    </span>\n"
 #~ "                    <t t-if=\"object.company_id.phone\">\n"
 #~ "                        <div style=\"margin-top: 0px; margin-right: 0px; "
@@ -2364,8 +2416,8 @@ msgstr ""
 #~ "                    </t>\n"
 #~ "                    <t t-if=\"object.company_id.website\">\n"
 #~ "                        <div>\n"
-#~ "                            Web: <a t-att-href=\"object.company_id."
-#~ "website\" t-out=\"object.company_id.website\"/>\n"
+#~ "                            Web: <a t-att-"
+#~ "href=\"object.company_id.website\" t-out=\"object.company_id.website\"/>\n"
 #~ "                        </div>\n"
 #~ "                    </t>\n"
 #~ "                </div>\n"
@@ -2447,16 +2499,16 @@ msgstr ""
 #~ "5px 5px; background-repeat: repeat no-repeat;\">\n"
 #~ "        <h3 style=\"margin: 0px; padding: 2px 14px; font-size: 12px; "
 #~ "color: #DDD;\">\n"
-#~ "            <strong style=\"text-transform:uppercase;\">${object."
-#~ "company_id.name}</strong></h3>\n"
+#~ "            <strong style=\"text-transform:uppercase;\">$"
+#~ "{object.company_id.name}</strong></h3>\n"
 #~ "    </div>\n"
 #~ "    <div style=\"width: 347px; margin: 0px; padding: 5px 14px; line-"
 #~ "height: 16px; background-color: #F2F2F2;\">\n"
 #~ "        <span style=\"color: #222; margin-bottom: 5px; display: block; "
 #~ "\">\n"
-#~ "            ${object.company_id.partner_id.sudo()."
-#~ "with_context(show_address=True, html_format=True).name_get()[0][1] | "
-#~ "safe}\n"
+#~ "            $"
+#~ "{object.company_id.partner_id.sudo().with_context(show_address=True, "
+#~ "html_format=True).name_get()[0][1] | safe}\n"
 #~ "        </span>\n"
 #~ "        % if object.company_id.phone:\n"
 #~ "            <div style=\"margin-top: 0px; margin-right: 0px; margin-"
@@ -2467,8 +2519,8 @@ msgstr ""
 #~ "        % endif\n"
 #~ "        % if object.company_id.website:\n"
 #~ "            <div>\n"
-#~ "                Web: <a href=\"${object.company_id.website}\">${object."
-#~ "company_id.website}</a>\n"
+#~ "                Web: <a href=\"${object.company_id.website}\">$"
+#~ "{object.company_id.website}</a>\n"
 #~ "            </div>\n"
 #~ "        %endif\n"
 #~ "        <p></p>\n"
@@ -2513,16 +2565,16 @@ msgstr ""
 #~ "5px 5px; background-repeat: repeat no-repeat;\">\n"
 #~ "        <h3 style=\"margin: 0px; padding: 2px 14px; font-size: 12px; "
 #~ "color: #DDD;\">\n"
-#~ "            <strong style=\"text-transform:uppercase;\">${object."
-#~ "company_id.name}</strong></h3>\n"
+#~ "            <strong style=\"text-transform:uppercase;\">$"
+#~ "{object.company_id.name}</strong></h3>\n"
 #~ "    </div>\n"
 #~ "    <div style=\"width: 347px; margin: 0px; padding: 5px 14px; line-"
 #~ "height: 16px; background-color: #F2F2F2;\">\n"
 #~ "        <span style=\"color: #222; margin-bottom: 5px; display: block; "
 #~ "\">\n"
-#~ "            ${object.company_id.partner_id.sudo()."
-#~ "with_context(show_address=True, html_format=True).name_get()[0][1] | "
-#~ "safe}\n"
+#~ "            $"
+#~ "{object.company_id.partner_id.sudo().with_context(show_address=True, "
+#~ "html_format=True).name_get()[0][1] | safe}\n"
 #~ "        </span>\n"
 #~ "        % if object.company_id.phone:\n"
 #~ "            <div style=\"margin-top: 0px; margin-right: 0px; margin-"
@@ -2533,8 +2585,8 @@ msgstr ""
 #~ "        % endif\n"
 #~ "        % if object.company_id.website:\n"
 #~ "            <div>\n"
-#~ "                Web: <a href=\"${object.company_id.website}\">${object."
-#~ "company_id.website}</a>\n"
+#~ "                Web: <a href=\"${object.company_id.website}\">$"
+#~ "{object.company_id.website}</a>\n"
 #~ "            </div>\n"
 #~ "        %endif\n"
 #~ "        <p></p>\n"
