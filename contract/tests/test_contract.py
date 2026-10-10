@@ -1606,14 +1606,18 @@ class TestContract(TestContractBase):
         self.assertEqual(self.acct_line.recurring_next_date, to_date("2024-02-01"))
 
         invoice.button_cancel()
-        self.acct_line.invalidate_recordset(["last_date_invoiced", "recurring_next_date"])
+        self.acct_line.invalidate_recordset(
+            ["last_date_invoiced", "recurring_next_date"]
+        )
         self.assertFalse(self.acct_line.last_date_invoiced)
         self.assertEqual(self.acct_line.recurring_next_date, to_date("2024-01-01"))
 
         invoice2 = self.contract.recurring_create_invoice()
         self.assertEqual(self.acct_line.last_date_invoiced, to_date("2024-01-31"))
         invoice2.unlink()
-        self.acct_line.invalidate_recordset(["last_date_invoiced", "recurring_next_date"])
+        self.acct_line.invalidate_recordset(
+            ["last_date_invoiced", "recurring_next_date"]
+        )
         self.assertFalse(self.acct_line.last_date_invoiced)
         self.assertEqual(self.acct_line.recurring_next_date, to_date("2024-01-01"))
 
